@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ps-node": "^0.1.6",
+    "type": "module"
+}
+}
