@@ -35,3 +35,11 @@ console.log.apply()
 
 // Gets the key value pair
 console.log(Object.entries(person))
+
+const id = person.name
+
+console.log(id)
+
+const { name: myName, address: {city} } = person
+
+console.log(myName, city)

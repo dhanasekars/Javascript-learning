@@ -20,8 +20,8 @@ console.log(beers)
 //Spread Opertator
 
 const arr = [1, 2, [3, 4, 5], 6, 7, 8, 9, [10, 11, 12]]
-flatARR = [...arr]
-console.log(flatARR)
+var flatARR = [...arr]
+console.log("This is flatted array " + flatARR)
 
 //Flatten arrays
 console.log(arr.flat())
