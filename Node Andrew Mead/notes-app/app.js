@@ -2,7 +2,7 @@ import validator from "validator"
 import chalk from "chalk"
 import yargs from "yargs"
 
-import { getNotes } from "./notes.js"
+import { addNote, removeNote, listNotes, readNote } from "./notes.js"
 
 // const argv = yargs(hideBin(process.argv)).argv
 // Adding a new note
@@ -21,10 +21,8 @@ yargs.command({
             type: "string",
         },
     },
-    handler: function (argv) {
-        console.log(
-            `New note ${argv.title} created! and here are the details of the note => "${argv.body}"`,
-        )
+    handler(argv) {
+        addNote(argv.title, argv.body)
     },
 })
 
@@ -32,8 +30,15 @@ yargs.command({
 yargs.command({
     command: "remove",
     describe: "Remove a new note.",
-    handler: function () {
-        console.log("Removing a note!")
+    builder: {
+        title: {
+            describe: "Remove a note",
+            demandOption: true,
+            type: "string",
+        },
+    },
+    handler(argv) {
+        removeNote(argv.title)
     },
 })
 
@@ -41,8 +46,8 @@ yargs.command({
 yargs.command({
     command: "list",
     describe: "List all notes.",
-    handler: function () {
-        console.log("Listing notes!")
+    handler(argv) {
+        listNotes()
     },
 })
 
@@ -51,8 +56,15 @@ yargs.command({
 yargs.command({
     command: "read",
     describe: "Open an existing note.",
-    handler: function () {
-        console.log("Opening a note!")
+    builder: {
+        title: {
+            describe: "Get details of the note",
+            demandOption: true,
+            type: "string",
+        },
+    },
+    handler(argv) {
+        readNote(argv.title)
     },
 })
 
